@@ -1,3 +1,6 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
 #define max 10
 int pre(char ch)
 {
@@ -55,8 +58,12 @@ void converter(char in[],char stack[],int top)
       else
       {
 
-	 while(pre(stack[top])>=pre(in[i]) && top!=-1)
+	 while(pre(stack[top])>=pre(in[i]))
+	 {
 	   top=pop(stack,top);
+	   if(top==-1)
+	     break;
+	 }
 
 	top=push(stack,top,in[i]);
 
@@ -77,9 +84,9 @@ void main()
 {
  char stack[10],in[50];
  int top=-1;
- clrscr();
+
  printf("\nEnter Your Infix");
  scanf("%s",in);
  converter(in,stack,top);
- getch();
+
 }
