@@ -5,6 +5,31 @@ struct tree
     struct tree *left,*right;
     int data;
 };
+struct tree* del(struct tree *root,int ele)
+{
+    struct node *curr=root,*pre=NULL,*temp,*pres,*succe;
+    int l=0
+    while(curr!=NULL && curr->data!=ele)
+    {
+        pre=curr;
+        curr=curr->data<ele?curr->right:curr->left;
+    }
+    if(curr==NULL)
+      printf("\nElement is not present ");
+    else
+    {
+        if(curr->left==NULL && curr->right==NULL)
+          pre->data<curr->data?pre->right=NULL:pre->left=NULL
+        else if(curr->left==NULL && curr->right==NULL)
+          temp=curr->left==NULL?curr->right:curr->left;
+          pre->data<curr->data?pre->right=temp:pre->left=temp;
+        else
+        {
+            pres=curr->right;
+            succe=pres->left;
+        }
+    }
+}
 struct tree* insert(struct tree *root,int data)
 {
     struct tree *n=(struct tree*)malloc(sizeof(struct tree)),*curr=root;
@@ -65,7 +90,8 @@ void main()
         printf("\n2.postOrder");
         printf("\n3.inOrder");
         printf("\n4.preOrder");
-        printf("\n5.exit");
+        printf("\n5.delete");
+        printf("\n6.exit");
         printf("\nEnter your choice");
         scanf("%d",&choice);
         switch(choice)
@@ -86,7 +112,14 @@ void main()
         
             case 4:
             preOrder(root);
+            break;
+            
             case 5:
+            printf("\nEnter Element you want to delete : ");
+            scanf("%d",&ele);
+            root=del(root,ele);
+            break;
+            case 6:
             exit(0);
             default:printf("\nplease,enter valid choice");
         }
