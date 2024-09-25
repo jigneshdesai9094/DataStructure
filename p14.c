@@ -7,8 +7,8 @@ struct tree
 };
 struct tree* del(struct tree *root,int ele)
 {
-    struct node *curr=root,*pre=NULL,*temp,*pres,*succe;
-    int l=0
+    struct tree *curr=root,*pre=NULL,*temp,*pres,*succe;
+    int l=0;
     while(curr!=NULL && curr->data!=ele)
     {
         pre=curr;
@@ -19,10 +19,12 @@ struct tree* del(struct tree *root,int ele)
     else
     {
         if(curr->left==NULL && curr->right==NULL)
-          pre->data<curr->data?pre->right=NULL:pre->left=NULL
+          (pre->data)<(curr->data)?(pre->right)=NULL:(pre->left)=NULL;
         else if(curr->left==NULL && curr->right==NULL)
+        {
           temp=curr->left==NULL?curr->right:curr->left;
-          pre->data<curr->data?pre->right=temp:pre->left=temp;
+          (pre->data)<(curr->data)?(pre->right)=temp:(pre->left)=temp;
+        }
         else
         {
             pres=curr->right;
