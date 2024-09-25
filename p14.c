@@ -27,8 +27,25 @@ struct tree* del(struct tree *root,int ele)
         {
             pres=curr->right;
             succe=pres->left;
+            if(succe==NULL)
+            {
+                pres->left=curr->left;
+                pre->data<curr->data?pre->right=pres:pre->left=pres;
+            }
+            else
+            {
+                while(succe->left!=NULL)
+                {
+                    pres=succe;
+                    succe=succe->left;
+                }
+                pres->left=succe->right;
+                pre->data<curr->data?pre->right=succe:pre->left=succe;
+            }
         }
+        free(curr);
     }
+    return root;
 }
 struct tree* insert(struct tree *root,int data)
 {
