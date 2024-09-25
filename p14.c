@@ -19,11 +19,11 @@ struct tree* del(struct tree *root,int ele)
     else
     {
         if(curr->left==NULL && curr->right==NULL)
-          (pre->data)<(curr->data)?(pre->right)=NULL:(pre->left)=NULL;
+          (pre->data)<(curr->data)?((pre->right)=NULL):((pre->left)=NULL);
         else if(curr->left==NULL && curr->right==NULL)
         {
           temp=curr->left==NULL?curr->right:curr->left;
-          (pre->data)<(curr->data)?(pre->right)=temp:(pre->left)=temp;
+          (pre->data)<(curr->data)?((pre->right)=temp):((pre->left)=temp);
         }
         else
         {
@@ -32,7 +32,7 @@ struct tree* del(struct tree *root,int ele)
             if(succe==NULL)
             {
                 pres->left=curr->left;
-                pre->data<curr->data?pre->right=pres:pre->left=pres;
+                pre->data<curr->data?(pre->right=pres):(pre->left=pres);
             }
             else
             {
@@ -42,7 +42,7 @@ struct tree* del(struct tree *root,int ele)
                     succe=succe->left;
                 }
                 pres->left=succe->right;
-                pre->data<curr->data?pre->right=succe:pre->left=succe;
+                pre->data<curr->data?(pre->right=succe):(pre->left=succe);
             }
         }
         free(curr);
