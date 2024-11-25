@@ -1,3 +1,5 @@
+#include<stdio.h>
+#include<stdlib.h>
 struct graph
 {
  int v;
@@ -70,17 +72,28 @@ void BFS(struct graph g)
 
 void DFS(struct graph g)
 {
+  int *stack=(int*)malloc(sizeof(int)*g.v);
   int *visited=(int*)malloc(sizeof(int)*g.v);
-  int t=0,j,con,i;
-  *visited=*(g.matrix);;
-  for(j=0;j<g.v;j++)
+  int top=0,l=0,d,j,row;
+  *stack=0;
+  *visited=0;
+  while(top!=-1)
   {
-    con=*((g.matrix+(g.v*(*(visited+t))))+j);
-    if(con==1 && isContain()==-1)
-    {
-      *(visited+t)=j;
-    }
+      d=*(stack+top);
+      top--;
+      for(j=0;j<g.v;j++)
+      {
+          row=*((g.matrix+(g.v*d))+j);
+          printf(" row = %d and col= %d",d,j);
+          if(row==1 && (isContain(stack,top,j)==-1) && (isContain(visited,l,j)))
+          {
+              *(stack+(++top))=j;
+              *(visited+)
+          }
+      }
   }
+  for(j=0;j<g.v;j++)
+     printf(" %d ",*(stack+j));
 }
 void display(struct graph g)
 {
@@ -97,11 +110,12 @@ void main()
 
   struct graph g;
   int v,e;
-  clrscr();
+
   printf("\nEnter virtices and edges");
   scanf("%d%d",&v,&e);
   g=createGraph(v,e);
   display(g);
   BFS(g);
-  getch();
+  DFS(g);
+  
 }
